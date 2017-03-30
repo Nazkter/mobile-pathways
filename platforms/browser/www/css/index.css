@@ -1,0 +1,18 @@
+.graph{
+    max-width: 100%;
+}
+#container {
+    position: relative;
+    width: 100%;
+    overflow-x: scroll;
+}
+.arrow-p{
+  font-size: 30px !important;
+  margin: 0px;
+}
+.left-btn{
+  float:left;
+}
+.right-btn{
+  float:right;
+}

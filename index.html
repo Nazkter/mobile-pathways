@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=yes, initial-scale=1, minimum-scale=1.0, width=device-width, height=device-height" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/fa/css/font-awesome.min.css" />
+    <link href="css/protvista.css" rel="stylesheet"/>
+    <link href="css/material.min.css" rel="stylesheet"/>
+    <link href="css/dialog.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+    <title>MPV</title>
+</head>
+<body>
+    <div class="" id="page-1" style="margin: 0 auto;width: 400px;">
+        <!-- LOGO -->
+        <div class="logo_img">
+            <img src="icon.png" alt="logo_MPV" width="80"/>
+        </div>
+        <!-- SEARCH INPUT -->
+        <div>
+            <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="text" id="protein_id">
+                <label class="mdl-textfield__label" for="protein_id">Insert the UniProt ID here</label>
+            </div>
+            <button id="search" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+                Graph
+            </button>
+        </div>
+        <!-- LOADING BAR -->
+        <div>
+            <div id="loading" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+        </div>
+        <div>
+            <p><strong>EXAMPLES:</strong></p>
+            <button class="nz_ex_btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">P05067</button>
+            <button class="nz_ex_btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">P04637</button>
+            <button class="nz_ex_btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">P63244</button>
+            <button class="nz_ex_btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Q14524</button>
+        </div>
+        <div style="width: 508px;margin-left: -55px;">
+            <p style="font-size: 12px;color: #bfbfbf;text-align: justify;line-height: 0.99;margin-top: 29px;">
+                MPV is a mobile adaptation of the BioJS ProtVista widget for the
+                visualization of protein annotations according to their location.
+                MPV adds features such as the plain text sequence display and an
+                index of publications related to a protein.
+            </p>
+        </div>
+    </div>
+    <div class="" id="page-2">
+        <header style="position: fixed;top: 0;left: 0;z-index: 100;width: 100%;">
+            <button class="nz_back_btn mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">
+                <i class="material-icons">navigate_before</i>
+                <span class="mdl-button__ripple-container">
+                    <span class="mdl-ripple is-animating" style="width: 160.392px; height: 160.392px; transform: translate(-50%, -50%) translate(32px, 32px);">
+                    </span>
+                </span>
+            </button>
+            <button class="nz_plus_btn mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">
+                <i class="material-icons">add</i>
+                <span class="mdl-button__ripple-container">
+                    <span class="mdl-ripple is-animating" style="width: 160.392px; height: 160.392px; transform: translate(-50%, -50%) translate(32px, 32px);">
+                    </span>
+                </span>
+            </button>
+            <!-- EXTRA INFO BUTTONS -->
+            <div class="extra_info" id="extra_info_p2">
+              <div>
+                <button class="nz_pubs mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">
+                    <i class="material-icons">description</i>
+                    <span class="mdl-button__ripple-container">
+                        <span class="mdl-ripple is-animating" style="width: 160.392px; height: 160.392px; transform: translate(-50%, -50%) translate(32px, 32px);">
+                        </span>
+                    </span>
+                </button>
+              </div>
+              <div>
+                <button class="nz_seq mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">
+                    <i class="material-icons">subject</i>
+                    <span class="mdl-button__ripple-container">
+                        <span class="mdl-ripple is-animating" style="width: 160.392px; height: 160.392px; transform: translate(-50%, -50%) translate(32px, 32px);">
+                        </span>
+                    </span>
+                </button>
+              </div>
+            </div>
+        </header>
+        <div id="container">
+            <div id='graph_div' class="graph"></div>
+        </div>
+        <!--<div class="buttons">
+            <div class="left-btn">
+                <p class="fa fa-arrow-left arrow-p"></p>
+            </div>
+            <div class="right-btn">
+                <p class="fa fa-arrow-right arrow-p"></p>
+            </div>
+        </div>-->
+    </div>
+    <div class="" id="page-3">
+      <header style="position: fixed;top: 0;left: 0;z-index: 100;width: 100%;">
+          <button class="nz_back_btn_2 mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">
+              <i class="material-icons">navigate_before</i>
+              <span class="mdl-button__ripple-container">
+                  <span class="mdl-ripple is-animating" style="width: 160.392px; height: 160.392px; transform: translate(-50%, -50%) translate(32px, 32px);">
+                  </span>
+              </span>
+          </button>
+          <button class="nz_plus_btn_p3 mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">
+              <i class="material-icons">add</i>
+              <span class="mdl-button__ripple-container">
+                  <span class="mdl-ripple is-animating" style="width: 160.392px; height: 160.392px; transform: translate(-50%, -50%) translate(32px, 32px);">
+                  </span>
+              </span>
+          </button>
+          <!-- EXTRA INFO BUTTONS -->
+          <div class="extra_info" id="extra_info_p3">
+            <div>
+              <button class="nz_pubs mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">
+                  <i class="material-icons">description</i>
+                  <span class="mdl-button__ripple-container">
+                      <span class="mdl-ripple is-animating" style="width: 160.392px; height: 160.392px; transform: translate(-50%, -50%) translate(32px, 32px);">
+                      </span>
+                  </span>
+              </button>
+            </div>
+            <div>
+              <button class="nz_seq mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">
+                  <i class="material-icons">subject</i>
+                  <span class="mdl-button__ripple-container">
+                      <span class="mdl-ripple is-animating" style="width: 160.392px; height: 160.392px; transform: translate(-50%, -50%) translate(32px, 32px);">
+                      </span>
+                  </span>
+              </button>
+            </div>
+          </div>
+      </header>
+      <div id="container">
+        <table id="pub_table" class="mdl-data-table mdl-js-data-table">
+            <thead>
+              <tr>
+                <th><strong>The following related publications were found:</strong></th>
+              </tr>
+            </thead>
+            <tbody id="pub_table">
+            </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="" id="page-4">
+      <header style="position: fixed;top: 0;left: 0;z-index: 100;width: 100%;">
+          <button class="nz_back_btn_3 mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">
+              <i class="material-icons">navigate_before</i>
+              <span class="mdl-button__ripple-container">
+                  <span class="mdl-ripple is-animating" style="width: 160.392px; height: 160.392px; transform: translate(-50%, -50%) translate(32px, 32px);">
+                  </span>
+              </span>
+          </button>
+          <button class="nz_plus_btn_p4 mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">
+              <i class="material-icons">add</i>
+              <span class="mdl-button__ripple-container">
+                  <span class="mdl-ripple is-animating" style="width: 160.392px; height: 160.392px; transform: translate(-50%, -50%) translate(32px, 32px);">
+                  </span>
+              </span>
+          </button>
+          <!-- EXTRA INFO BUTTONS -->
+          <div class="extra_info" id="extra_info_p4">
+            <div>
+              <button class="nz_pubs mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">
+                  <i class="material-icons">description</i>
+                  <span class="mdl-button__ripple-container">
+                      <span class="mdl-ripple is-animating" style="width: 160.392px; height: 160.392px; transform: translate(-50%, -50%) translate(32px, 32px);">
+                      </span>
+                  </span>
+              </button>
+            </div>
+            <div>
+              <button class="nz_seq mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">
+                  <i class="material-icons">subject</i>
+                  <span class="mdl-button__ripple-container">
+                      <span class="mdl-ripple is-animating" style="width: 160.392px; height: 160.392px; transform: translate(-50%, -50%) translate(32px, 32px);">
+                      </span>
+                  </span>
+              </button>
+            </div>
+          </div>
+      </header>
+      <div class="sequence">
+          <div id="sequence" onclick="copyToClipboard('sequence')">
+          </div>
+          <div id="toast" class="mdl-js-snackbar mdl-snackbar">
+              <div class="mdl-snackbar__text"></div>
+              <button class="mdl-snackbar__action" type="button"></button>
+          </div>
+      </div>
+    </div>
+
+    <footer>
+        COPYRIGHT UNIVERSIDAD DISTRITAL  -  GRUPO DE INVESTIGACIÓN  GICOGE
+    </footer>
+    <dialog id="error" class="mdl-dialog">
+      <h3 id="error_title" class="mdl-dialog__title">Error</h3>
+      <div class="mdl-dialog__content">
+        <p id="error_text">
+        </p>
+      </div>
+      <div class="mdl-dialog__actions">
+        <button id="close_error" type="button" class="mdl-button">Close</button>
+      </div>
+    </dialog>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/protvista.js"></script>
+    <script src="js/material.min.js"></script>
+    <script src="js/dialog.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
